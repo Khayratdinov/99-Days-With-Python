@@ -2,6 +2,7 @@
 import pygame
 import random
 import time
+import pygame_widgets as pw
 
 # initializing window
 pygame.init()
@@ -10,7 +11,7 @@ HEIGHT = 600
 black = (0, 0, 0)
 gameDisplay = pygame.display.set_mode((WIDTH, HEIGHT))  # setting game display size
 pygame.display.set_caption("DataFlair- Keyboard Jump Game")
-background = pygame.image.load("images/keyback.jpg")
+background = pygame.image.load("images/start.jpg")
 background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # scale image
 font = pygame.font.Font("fonts/comic.ttf", 40)
 
@@ -74,9 +75,9 @@ while True:
         game_start = False
     game_over = False
 
-    background = pygame.image.load("images/teacher-background.jpg")
+    background = pygame.image.load("images/background4.jpg")
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-    character = pygame.image.load("images/char.jpg")
+    character = pygame.image.load("images/char.png")
     character = pygame.transform.scale(character, (50, 50))
     wood = pygame.image.load("images/wood-.png")
     wood = pygame.transform.scale(wood, (90, 50))

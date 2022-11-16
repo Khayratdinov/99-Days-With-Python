@@ -148,6 +148,11 @@ ENV/
 env.bak/
 venv.bak/
 
+
+lesson01.py
+lesson02.py
+lesson03.py
+
 # Spyder project settings
 .spyderproject
 .spyproject
