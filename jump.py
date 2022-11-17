@@ -5,6 +5,9 @@ import time
 import pygame_widgets as pw
 
 # initializing window
+
+
+heart = 2
 pygame.init()
 WIDTH = 800
 HEIGHT = 600
@@ -94,6 +97,7 @@ while True:
     draw_text(gameDisplay, str(displayword), 40, x_cor, y_cor)
     draw_text(gameDisplay, str(yourword), 40, WIDTH / 2, 500)
     draw_text(gameDisplay, "Score:" + str(score), 40, WIDTH / 2, 5)
+    draw_text(gameDisplay, str(heart + 1) + " live", 40, WIDTH / 2, 55)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -101,15 +105,17 @@ while True:
             quit()
         elif event.type == pygame.KEYDOWN:
             yourword += pygame.key.name(event.key)
-
             if displayword.startswith(yourword):
                 if displayword == yourword:
                     score += len(displayword)
                     new_word()
-            else:
+            elif heart == 0:
                 game_front_screen()
-                time.sleep(2)
+                time.sleep(5)
                 pygame.quit()
+            else:
+                heart -= 1
+                new_word()
 
     if y_cor < HEIGHT - 5:
         pygame.display.update()
