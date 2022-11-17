@@ -85,19 +85,32 @@ while True:
     background = pygame.image.load("images/background4.jpg")
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     character = pygame.image.load("images/char.png")
-    character = pygame.transform.scale(character, (50, 50))
+    character = pygame.transform.scale(character, (80, 100))
     wood = pygame.image.load("images/wood-.png")
-    wood = pygame.transform.scale(wood, (90, 50))
-
+    wood = pygame.transform.scale(wood, (240, 50))
     gameDisplay.blit(background, (0, 0))
+    gameDisplay.blit(wood, (x_cor - 80, y_cor + 25))
+    gameDisplay.blit(character, (x_cor + 80, y_cor - 55))
+
+    # background = pygame.image.load("images/background4.jpg")
+    # background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    # character = pygame.image.load("images/char.png")
+    # character = pygame.transform.scale(character, (50, 50))
+    # wood = pygame.image.load("images/wood-.png")
+    # wood = pygame.transform.scale(wood, (90, 50))
+
+    # gameDisplay.blit(background, (0, 0))
 
     y_cor += word_speed
-    gameDisplay.blit(wood, (x_cor - 50, y_cor + 15))
-    gameDisplay.blit(character, (x_cor - 100, y_cor))
+    # gameDisplay.blit(wood, (x_cor - 50, y_cor + 15))
+    # gameDisplay.blit(character, (x_cor - 100, y_cor))
     draw_text(gameDisplay, str(displayword), 40, x_cor, y_cor)
     draw_text(gameDisplay, str(yourword), 40, WIDTH / 2, 500)
     draw_text(gameDisplay, "Score:" + str(score), 40, WIDTH / 2, 5)
-    draw_text(gameDisplay, str(heart + 1) + " live", 40, WIDTH / 2, 55)
+    heart_icon = pygame.image.load("images/heart.png")
+    heart_icon = pygame.transform.scale(heart_icon, (40, 40))
+    gameDisplay.blit(heart_icon, (350, 48))
+    draw_text(gameDisplay, str(heart + 1), 40, WIDTH / 2, 55)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
