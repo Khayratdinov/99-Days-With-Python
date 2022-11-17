@@ -88,6 +88,7 @@ while True:
     gameDisplay.blit(wood, (x_cor - 50, y_cor + 15))
     gameDisplay.blit(character, (x_cor - 100, y_cor))
     draw_text(gameDisplay, str(displayword), 40, x_cor, y_cor)
+    draw_text(gameDisplay, str(yourword), 40, WIDTH / 2, 500)
     draw_text(gameDisplay, "Score:" + str(score), 40, WIDTH / 2, 5)
 
     for event in pygame.event.get():
