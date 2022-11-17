@@ -50,6 +50,10 @@ def draw_text(display, text, size, x, y):
 def game_front_screen():
     gameDisplay.blit(background, (0, 0))
     if not game_over:
+        gameOverDisplay = pygame.display.set_mode((WIDTH, HEIGHT))
+        background_g = pygame.image.load("images/game-over.jpg")
+        background_g = pygame.transform.scale(background_g, (WIDTH, HEIGHT))
+        gameOverDisplay.blit(background_g, (0, 0))
         draw_text(gameDisplay, "GAME OVER!", 90, WIDTH / 2, HEIGHT / 4)
         draw_text(gameDisplay, "Score : " + str(score), 70, WIDTH / 2, HEIGHT / 2)
     else:
