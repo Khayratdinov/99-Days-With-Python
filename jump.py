@@ -49,6 +49,29 @@ def draw_text(display, text, size, x, y):
     gameDisplay.blit(text_surface, text_rect)
 
 
+# def sleep_new_word(func):
+#     def wrapper():
+#         pygame.time.wait(1000)
+
+#     return wrapper
+
+
+def error_fun():
+    gameDisplay.blit(background, (0, 0))
+    draw_text(gameDisplay, "ERROR!", 54, WIDTH / 2, 500)
+
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.KEYUP:
+
+                waiting = False
+
+
 # function to show front screen and gameover screen
 def game_front_screen():
     gameDisplay.blit(background, (0, 0))
@@ -124,10 +147,17 @@ while True:
                     new_word()
             elif heart == 0:
                 game_front_screen()
-                time.sleep(5)
+                time.sleep(2)
                 pygame.quit()
             else:
+                error_fun()
                 heart -= 1
+                # time_for_error = 0
+                # while time_for_error < 2:
+                #     time_for_error += 1
+                #     time.sleep(1)
+
+                # if time_for_error == 2:
                 new_word()
 
     if y_cor < HEIGHT - 5:
