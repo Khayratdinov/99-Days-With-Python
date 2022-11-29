@@ -2,7 +2,6 @@
 import pygame
 import random
 import time
-import pygame_widgets as pw
 
 # initializing window
 
@@ -12,6 +11,7 @@ pygame.init()
 WIDTH = 800
 HEIGHT = 600
 black = (0, 0, 0)
+white = (255, 255, 255)
 gameDisplay = pygame.display.set_mode((WIDTH, HEIGHT))  # setting game display size
 pygame.display.set_caption("DataFlair- Keyboard Jump Game")
 background = pygame.image.load("images/start.jpg")
@@ -41,9 +41,9 @@ new_word()
 font_name = pygame.font.match_font("fonts/comic.ttf")
 
 
-def draw_text(display, text, size, x, y):
+def draw_text(display, text, size, x, y, color=black):
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, black)
+    text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     gameDisplay.blit(text_surface, text_rect)
@@ -56,21 +56,6 @@ def draw_text(display, text, size, x, y):
 #     return wrapper
 
 
-def error_fun():
-    gameDisplay.blit(background, (0, 0))
-    draw_text(gameDisplay, "ERROR!", 54, WIDTH / 2, 500)
-
-    pygame.display.flip()
-    waiting = True
-    while waiting:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-            if event.type == pygame.KEYUP:
-
-                waiting = False
-
 
 # function to show front screen and gameover screen
 def game_front_screen():
@@ -80,8 +65,8 @@ def game_front_screen():
         background_g = pygame.image.load("images/game-over.jpg")
         background_g = pygame.transform.scale(background_g, (WIDTH, HEIGHT))
         gameOverDisplay.blit(background_g, (0, 0))
-        draw_text(gameDisplay, "GAME OVER!", 90, WIDTH / 2, HEIGHT / 4)
-        draw_text(gameDisplay, "Score : " + str(score), 70, WIDTH / 2, HEIGHT / 2)
+        draw_text(gameDisplay, "GAME OVER!", 90, WIDTH / 2, HEIGHT / 4, color=white)
+        draw_text(gameDisplay, "Score : " + str(score), 70, WIDTH / 2, HEIGHT / 2, color=white)
     else:
         draw_text(gameDisplay, "Press a key to begin!", 54, WIDTH / 2, 500)
     pygame.display.flip()
@@ -150,14 +135,7 @@ while True:
                 time.sleep(2)
                 pygame.quit()
             else:
-                error_fun()
                 heart -= 1
-                # time_for_error = 0
-                # while time_for_error < 2:
-                #     time_for_error += 1
-                #     time.sleep(1)
-
-                # if time_for_error == 2:
                 new_word()
 
     if y_cor < HEIGHT - 5:
