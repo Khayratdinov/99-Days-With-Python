@@ -4,8 +4,6 @@ import random
 import time
 
 # initializing window
-
-
 heart = 2
 pygame.init()
 WIDTH = 800
@@ -49,14 +47,6 @@ def draw_text(display, text, size, x, y, color=black):
     gameDisplay.blit(text_surface, text_rect)
 
 
-# def sleep_new_word(func):
-#     def wrapper():
-#         pygame.time.wait(1000)
-
-#     return wrapper
-
-
-
 # function to show front screen and gameover screen
 def game_front_screen():
     gameDisplay.blit(background, (0, 0))
@@ -66,7 +56,9 @@ def game_front_screen():
         background_g = pygame.transform.scale(background_g, (WIDTH, HEIGHT))
         gameOverDisplay.blit(background_g, (0, 0))
         draw_text(gameDisplay, "GAME OVER!", 90, WIDTH / 2, HEIGHT / 4, color=white)
-        draw_text(gameDisplay, "Score : " + str(score), 70, WIDTH / 2, HEIGHT / 2, color=white)
+        draw_text(
+            gameDisplay, "Score : " + str(score), 70, WIDTH / 2, HEIGHT / 2, color=white
+        )
     else:
         draw_text(gameDisplay, "Press a key to begin!", 54, WIDTH / 2, 500)
     pygame.display.flip()
@@ -99,19 +91,7 @@ while True:
     gameDisplay.blit(background, (0, 0))
     gameDisplay.blit(wood, (x_cor - 80, y_cor + 25))
     gameDisplay.blit(character, (x_cor + 80, y_cor - 55))
-
-    # background = pygame.image.load("images/background4.jpg")
-    # background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-    # character = pygame.image.load("images/char.png")
-    # character = pygame.transform.scale(character, (50, 50))
-    # wood = pygame.image.load("images/wood-.png")
-    # wood = pygame.transform.scale(wood, (90, 50))
-
-    # gameDisplay.blit(background, (0, 0))
-
     y_cor += word_speed
-    # gameDisplay.blit(wood, (x_cor - 50, y_cor + 15))
-    # gameDisplay.blit(character, (x_cor - 100, y_cor))
     draw_text(gameDisplay, str(displayword), 40, x_cor, y_cor)
     draw_text(gameDisplay, str(yourword), 40, WIDTH / 2, 500)
     draw_text(gameDisplay, "Score:" + str(score), 40, WIDTH / 2, 5)

@@ -2,15 +2,23 @@
 # Minions Keyboard Jump mini Game
 
 
-### Start Game
-
-<img src="images/game-start.png">
+## install pygame
+```sh
+pip install pygame
+```
 ---
 
 ### Game
 
 <img src="images/game.png">
 
+---
+
+### Start Game
+
+<img src="images/game-start.png">
+
+---
 
 ### Game over
 
